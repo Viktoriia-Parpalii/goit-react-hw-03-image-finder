@@ -7,6 +7,7 @@ export class Searchbar extends Component {
     const searchedImagesName =
       e.currentTarget.elements.searchedImagesName.value;
     this.props.saveSearchedImagesNameInState(searchedImagesName);
+    e.currentTarget.reset();
   };
 
   render() {
@@ -21,8 +22,8 @@ export class Searchbar extends Component {
             className="SearchForm-input"
             type="text"
             name="searchedImagesName"
-            // autocomplete="off"
-            // autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
           />
         </form>
