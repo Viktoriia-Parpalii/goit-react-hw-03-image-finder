@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Button } from './Button/Button';
 export class App extends Component {
   state = {
-    images: null,
+    // images: null,
     isLoading: false,
     error: null,
     searchedImagesName: null,
