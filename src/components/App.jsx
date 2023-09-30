@@ -25,22 +25,22 @@ export class App extends Component {
       return { currentPage: prevState.currentPage + 1 };
     });
   };
-  fetchAllImages = async () => {
-    try {
-      this.setState({ isLoading: true });
-      const allImages = await fetchImages(this.state.currentPage);
-      this.setState({ images: allImages });
-    } catch (error) {
-      this.setState({
-        error: toast.error(error.message, { theme: 'colored' }),
-      });
-    } finally {
-      this.setState({ isLoading: false });
-    }
-  };
-  componentDidMount() {
-    this.fetchAllImages();
-  }
+  // fetchAllImages = async () => {
+  //   try {
+  //     this.setState({ isLoading: true });
+  //     const allImages = await fetchImages(this.state.currentPage);
+  //     this.setState({ images: allImages });
+  //   } catch (error) {
+  //     this.setState({
+  //       error: toast.error(error.message, { theme: 'colored' }),
+  //     });
+  //   } finally {
+  //     this.setState({ isLoading: false });
+  //   }
+  // };
+  // componentDidMount() {
+  //   this.fetchAllImages();
+  // }
 
   saveSearchedImagesNameInState = searchedImagesName => {
     this.setState({ searchedImagesName: searchedImagesName });
@@ -61,7 +61,10 @@ export class App extends Component {
   };
 
   componentDidUpdate(_, prevState) {
-    if (prevState.searchedImagesName !== this.state.searchedImagesName) {
+    if (
+      prevState.currentPage !== this.state.currentPage ||
+      prevState.searchedImagesName !== this.state.searchedImagesName
+    ) {
       this.fetchByName();
     }
   }

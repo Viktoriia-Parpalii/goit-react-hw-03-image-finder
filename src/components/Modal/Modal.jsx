@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export class Modal extends Component {
   componentDidMount() {
     window.addEventListener('keydown', this.onKeyDown);
@@ -22,7 +21,7 @@ export class Modal extends Component {
     return (
       <div className="Overlay" onClick={this.onOverlayClick}>
         <div className="Modal">
-          <img src={this.props.data} alt="images" />
+          <img src={this.props.data} alt="images" width={850} />
         </div>
       </div>
     );
