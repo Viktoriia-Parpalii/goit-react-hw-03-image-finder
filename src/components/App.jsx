@@ -1,6 +1,6 @@
 import { ImageGallery } from '../ImageGallery/ImageGallery';
 import { Searchbar } from './Searchbar/Searchbar';
-import { fetchImages, fetchImagesByCategories } from 'services/api';
+import { fetchImagesByCategories } from 'services/api';
 
 import React, { Component } from 'react';
 import { MagnifyingGlass } from 'react-loader-spinner';
