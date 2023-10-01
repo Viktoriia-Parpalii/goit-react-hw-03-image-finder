@@ -1,11 +1,15 @@
 import { Component } from 'react';
 import { BsSearch } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 export class Searchbar extends Component {
   handleSearchSubmit = e => {
     e.preventDefault();
     const searchedImagesName =
       e.currentTarget.elements.searchedImagesName.value;
+    if (searchedImagesName.trim() === '') {
+      return toast.warning(`Cannot be empty`, { theme: 'colored' });
+    }
     this.props.saveSearchedImagesNameInState(searchedImagesName);
     e.currentTarget.reset();
   };

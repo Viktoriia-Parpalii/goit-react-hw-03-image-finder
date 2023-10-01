@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchImagesByCategories } from 'services/api';
 import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGallery } from '../ImageGallery/ImageGallery';
+import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { Modal } from './Modal/Modal';
 export class App extends Component {
@@ -25,25 +25,13 @@ export class App extends Component {
       return { page: prevState.page + 1 };
     });
   };
-  // fetchAllImages = async () => {
-  //   try {
-  //     this.setState({ isLoading: true });
-  //     const allImages = await fetchImages(this.state.currentPage);
-  //     this.setState({ images: allImages });
-  //   } catch (error) {
-  //     this.setState({
-  //       error: toast.error(error.message, { theme: 'colored' }),
-  //     });
-  //   } finally {
-  //     this.setState({ isLoading: false });
-  //   }
-  // };
-  // componentDidMount() {
-  //   this.fetchAllImages();
-  // }
 
   saveSearchedImagesNameInState = searchedImagesName => {
-    this.setState({ searchedImagesName: searchedImagesName });
+    this.setState({
+      searchedImagesName: searchedImagesName,
+      images: [],
+      page: 1,
+    });
   };
   fetchByName = async () => {
     try {
@@ -55,6 +43,7 @@ export class App extends Component {
       const imagesByCategories = data.hits;
       if (data.hits.length === 0) {
         this.setState({
+          loadMore: false,
           error: toast.warning(
             `Images weren't found! Please enter another name.`,
             { theme: 'colored' }
