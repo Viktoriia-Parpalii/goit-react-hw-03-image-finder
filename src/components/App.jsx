@@ -82,8 +82,8 @@ export class App extends Component {
 
   componentDidUpdate(_, prevState) {
     if (
-      prevState.page !== this.state.page ||
-      prevState.searchedImagesName !== this.state.searchedImagesName
+      this.state.page !== prevState.page ||
+      this.state.searchedImagesName !== prevState.searchedImagesName
     ) {
       this.fetchByName();
     }
