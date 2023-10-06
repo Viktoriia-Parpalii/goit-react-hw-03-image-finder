@@ -112,7 +112,7 @@ export class App extends Component {
           />
         )}
 
-        {this.state.error && <ToastContainer />}
+       
         {this.state.images.length !== 0 && (
           <ImageGallery
             images={this.state.images}
@@ -128,6 +128,7 @@ export class App extends Component {
             onCloseModal={this.onCloseModal}
           />
         )}
+         {this.state.error && <ToastContainer />}
       </>
     );
   }
